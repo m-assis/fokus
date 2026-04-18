@@ -1,9 +1,9 @@
-// encontrar o botão adicionar tarefa
 const btnAdicionarTarefa = document.querySelector('.app__button--add-task')
 const formAdicionarTarefa = document.querySelector('.app__form-add-task')
 const textArea = document.querySelector('.app__form-add-task textarea')
+const ulTarefas = document.querySelector('.app__section-task-list')
 
-const tarefas = []
+const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
 
 function criaElementoTarefa(tarefa) {
     const li = document.createElement('li')
@@ -23,11 +23,11 @@ function criaElementoTarefa(tarefa) {
     const imagemBotao = document.createElement('img')
 
     imagemBotao.setAttribute('src', '/imagens/edit.png')
-    imagemBotao.append(imagemBotao)
+    botao.append(imagemBotao)
 
-    li.append{svg}
-    li.append{paragrafo}
-    li.append{button}
+    li.append(svg)
+    li.append(paragrafo)
+    li.append(button)
 
 }
 
@@ -43,4 +43,10 @@ formAdicionarTarefa.addEventListener('submit', (evento) => {
 
     tarefas.push(tarefa)
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
+})
+
+tarefas.forEach(tarefa => {
+   const elementoTarefa =  criaElementoTarefa(tarefa)
+   ulTarefas.append(elementoTarefa)
+
 })
